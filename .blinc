@@ -1,0 +1,16 @@
+[[tasks]]
+cmd = "cargo"
+args = ["check"]
+
+[[tasks]]
+cmd = "cargo"
+args = ["clippy", "--all-targets", "--all-features", "--", "-W", "clippy::pedantic", "-D", "warnings"]
+
+[[tasks]]
+cmd = "cargo"
+args = ["test"]
+
+[colors]
+pending = ["blue", "white"]
+failure = "red"
+success = "green"
