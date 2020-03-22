@@ -20,5 +20,8 @@ args = ["clippy", "--all-targets", "--all-features", "--", "-W", "clippy::pedant
 dependencies = [
     "format",
     "clippy",
+    "build",
+    "test",
+    "coverage-flow",
     "codecov-flow"
 ]
