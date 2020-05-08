@@ -16,6 +16,10 @@ install_create = "clippy"
 command = "cargo"
 args = ["clippy", "--all-targets", "--all-features", "--", "-W", "clippy::pedantic", "-D", "warnings"]
 
+[tasks.build]
+command = "cargo"
+args = ["build", "--release"]
+
 [tasks.all]
 dependencies = [
     "format",
