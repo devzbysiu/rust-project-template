@@ -1,3 +1,0 @@
-[template]
-include = ["README.md",  "Cargo.toml", "release.yml"]
-exclude = []
