@@ -2,9 +2,9 @@
 
   <h1><code>{{project-name}}</code></h1>
 
-  <p>
+  <h3>
     <strong>CHANGEME</strong>
-  </p>
+  </h3>
 
   <p>
     <img src="https://github.com/devzbysiu/{{project-name}}/workflows/Main/badge.svg" alt="CI status
@@ -32,7 +32,7 @@
     <a href="#contribution">Contribution</a>
   </h3>
 
-  <sub>Built with 🦀</sub>
+  <sub><h4>Built with 🦀</h4></sub>
 </div>
 
 # <p id="about">About</p>
