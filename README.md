@@ -10,17 +10,17 @@
     <img src="https://github.com/devzbysiu/{{project-name}}/workflows/Main/badge.svg" alt="CI status
     badge" />
     <a href="https://codecov.io/gh/devzbysiu/{{project-name}}">
-      <img src="https://img.shields.io/codecov/c/github/devzbysiu/{{project-name}}?color=%2388C0D0&logoColor=%234C566A&style=flat-square&token=bfdc4b9d55534910ae48fba0b8e984d0" alt="Code coverage"/>
+      <img src="https://img.shields.io/codecov/c/github/devzbysiu/{{project-name}}?style=for-the-badge&token=bfdc4b9d55534910ae48fba0b8e984d0" alt="Code coverage"/>
     </a>
     <a href="https://crates.io/crates/{{project-name}}">
-      <img src="https://img.shields.io/crates/l/{{project-name}}?color=%2388C0D0&logoColor=%234C566A&style=flat-square" alt="License"/>
+      <img src="https://img.shields.io/crates/l/{{project-name}}?style=for-the-badge" alt="License"/>
     </a>
     <a href="https://docs.rs/{{project-name}}">
-      <img src="https://img.shields.io/badge/docs-latest-blue.svg?color=%2388C0D0&logoColor=%234C566A&style=flat-square" alt="docs.rs docs" />
+      <img src="https://img.shields.io/badge/docs-latest-blue.svg?style=for-the-badge" alt="docs.rs docs" />
     </a>
   </p>
 
-  <h4>
+  <h3>
     <a href="#about">About</a>
     <span> | </span>
     <a href="#installation">Installation</a>
@@ -36,8 +36,6 @@
 </div>
 
 # <p id="about">About</p>
-
-</p>
 
 ## --- TODO ---
 
