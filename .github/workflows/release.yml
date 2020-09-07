@@ -1,48 +1,64 @@
-# This is a basic workflow to help you get started with Actions
+name: Continuous Deployment
 
-name: Release
-
-# Controls when the action will run. Triggers the workflow on push or pull request 
-# events but only for the master branch
 on:
   push:
     tags:
       - "v*"
-  pull_request:
-    branches: [ master ]
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+  publish:
+    name: Publishing for {{ "${{ matrix.os " }}}}
+    runs-on: {{ "${{ matrix.os " }}}}
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+        rust: [stable]
+        include:
+          - os: macos-latest
+            artifact_prefix: macos
+            target: x86_64-apple-darwin
+            binary_postfix: ""
+          - os: ubuntu-latest
+            artifact_prefix: linux
+            target: x86_64-unknown-linux-gnu
+            binary_postfix: ""
+          - os: windows-latest
+            artifact_prefix: windows
+            target: x86_64-pc-windows-msvc
+            binary_postfix: ".exe"
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - name: Checkout Repo
-      uses: actions/checkout@v2
+      - name: Installing Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: {{ "${{ matrix.rust " }}}}
+          override: true
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Cargo build
+        uses: actions-rs/cargo@v1
+        with:
+          command: build
+          toolchain: {{ "${{ matrix.rust " }}}}
+          args: --release --target {{ "${{ matrix.target " }}}}
 
-    # Use cargo make https://github.com/davidB/rust-cargo-make
-    - name: Run cargo-make
-      uses: actions-rs/toolchain@v1
-      with:
-        toolchain: stable
-        override: true
-    - uses: davidB/rust-cargo-make@v1
-    - name: Run tests
-      run: cargo make --profile ci all
-      env:
-        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      - name: Packaging final binary
+        shell: bash
+        run: |
+          cd target/{{ "${{ matrix.target " }}}}/release
+          strip {{project-name}}{{ "${{ matrix.binary_postfix " }}}}
+          tar czvf {{project-name}}-{{ "${{ matrix.artifact_prefix " }}}}.tar.gz {{project-name}}{{ "${{ matrix.binary_postfix " }}}}
 
-    # Upload release to github
-    - name: Upload binaries to release
-      uses: svenstaro/upload-release-action@v1-release
-      with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: target/release/{{project-name}}
-        asset_name: {{project-name}}
-
-        tag: ${{ github.ref }}
-        overwrite: true
+          if [[ {{ "${{ runner.os " }}}} == 'Windows' ]]; then
+            certutil -hashfile {{project-name}}-{{ "${{ matrix.artifact_prefix " }}}}.tar.gz sha256 | grep -E [A-Fa-f0-9]{64} > {{project-name}}-{{ "${{ matrix.artifact_prefix " }}}}.sha256
+          else
+            shasum -a 256 {{project-name}}-{{ "${{ matrix.artifact_prefix " }}}}.tar.gz > {{project-name}}-{{ "${{ matrix.artifact_prefix " }}}}.sha256
+          fi
+      - name: Releasing assets
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            target/{{ "${{ matrix.target " }}}}/release/{{project-name}}-{{ "${{ matrix.artifact_prefix " }}}}.tar.gz
+            target/{{ "${{ matrix.target " }}}}/release/{{project-name}}-{{ "${{ matrix.artifact_prefix " }}}}.sha256
+        env:
+          GITHUB_TOKEN: {{ "${{ secrets.GITHUB_TOKEN " }}}}
