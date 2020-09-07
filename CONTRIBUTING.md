@@ -11,10 +11,10 @@ possible.
 
 ## Reporting issues
 
-Issues have to be reported on our [[https://github.com/{[username]}/{{project-name}}/issues][issues tracker]]. Please:
+Issues have to be reported on our [issues tracker](https://github.com/{[username]}/{{project-name}}/issues). Please:
 
 - Check that the issue has not already been reported.
-  - This can be achieved by searching keywords on the [[https://github.com/{[username]}/{{project-name}}/issues][issues tracker]].
+  - This can be achieved by searching keywords on the [issues tracker](https://github.com/{[username]}/{{project-name}}/issues).
 - Try to use a clear title, and describe your problem with complete sentences.
 
 ## Pull requests
@@ -29,7 +29,7 @@ file under the **Unreleased** section.
 
 Add the changes of your pull request to one of the following subsections,
 depending on the types of changes defined by
-[[https://keepachangelog.com/en/1.0.0/][Keep a changelog]]:
+[Keep a changelog](https://keepachangelog.com/en/1.0.0/):
 
 - `Added` for new features.
 - `Changed` for changes in existing functionality.
@@ -63,7 +63,7 @@ cargo build
 - Run Clippy:
 
   ```shell
-  cargo clippy --all
+  cargo clippy --all-targets --all-features -- -W clippy::pedantic -D warnings
   ```
 
 - Run all tests:
