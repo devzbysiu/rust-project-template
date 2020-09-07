@@ -14,9 +14,18 @@
 # - create git tag with version number
 #
 [package]
-name = "{{crate_name}}"
+name = "{{project-name}}"
 version = "0.1.0"
 authors = ["Bartosz Zbytniewski <bartosz.zbytniewski.dev@gmail.com>"]
+edition = "2018"
+description = ""
+repository = "https://github.com/{[username]}/{{project-name}}"
+license = "MIT/Apache-2.0"
+readme = "README.md"
+keywords = []
+categories = []
+homepage = ""
+documentation = ""
 edition = "2018"
 
 [dependencies]
