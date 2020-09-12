@@ -26,7 +26,6 @@ keywords = []
 categories = []
 homepage = ""
 documentation = ""
-edition = "2018"
 
 [dependencies]
 log = "0.4"
