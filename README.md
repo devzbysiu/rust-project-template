@@ -10,7 +10,7 @@
    <img src="https://github.com/devzbysiu/{{project-name}}/workflows/ci/badge.svg" alt="CI status
     badge" />
     <a href="https://codecov.io/gh/devzbysiu/{{project-name}}">
-      <img src="https://img.shields.io/codecov/c/github/devzbysiu/{{project-name}}?style=for-the-badge&token=bfdc4b9d55534910ae48fba0b8e984d0" alt="Code coverage"/>
+      <img src="https://img.shields.io/codecov/c/github/devzbysiu/{{project-name}}?style=for-the-badge&token=f2339b3de9e44be0a902458a669c1160" alt="Code coverage"/>
     </a>
     <a href="https://crates.io/crates/{{project-name}}">
       <img src="https://img.shields.io/crates/l/{{project-name}}?style=for-the-badge" alt="License"/>
