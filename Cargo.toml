@@ -19,7 +19,7 @@ version = "0.1.0"
 authors = ["Bartosz Zbytniewski <bartosz.zbytniewski.dev@gmail.com>"]
 edition = "2021"
 description = ""
-repository = "https://github.com/{[username]}/{{project-name}}"
+repository = "https://github.com/devzbysiu/{{project-name}}"
 license = "MIT/Apache-2.0"
 readme = "README.md"
 keywords = []
@@ -29,4 +29,5 @@ documentation = ""
 
 [dependencies]
 log = "0.4.11"
-pretty_env_logger = "0.4.0"
+# TODO: move it back to original implementation after https://github.com/seanmonstar/pretty-env-logger/pull/49 is closed
+pretty_env_logger = { git = "https://github.com/complexspaces/pretty-env-logger", branch = "update-env-logger" }
