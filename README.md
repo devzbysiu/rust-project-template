@@ -7,8 +7,7 @@
   </h3>
 
   <p>
-   <img src="https://github.com/devzbysiu/{{project-name}}/workflows/ci/badge.svg" alt="CI status
-    badge" />
+    <img src="https://img.shields.io/github/actions/workflow/status/devzbysiu/{{project-name}}/ci.yml?style=for-the-badge" alt="CI status badge" />
     <a href="https://codecov.io/gh/devzbysiu/{{project-name}}">
       <img src="https://img.shields.io/codecov/c/github/devzbysiu/{{project-name}}?style=for-the-badge" alt="Code coverage"/>
     </a>
