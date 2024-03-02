@@ -11,17 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
-    - uses: Swatinem/rust-cache@v1
+    - uses: Swatinem/rust-cache@v2
 
     - name: Run cargo-make
-      uses: actions-rs/toolchain@v1
-      with:
-        toolchain: stable
-        override: true
-    - uses: davidB/rust-cargo-make@v1
-    - name: Run tests
+      uses: dtolnay/rust-toolchain@stable
+    - uses: davidB/rust-cargo-make@v1.10.0
+    - name: Run all
       run: cargo make --profile ci all
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
